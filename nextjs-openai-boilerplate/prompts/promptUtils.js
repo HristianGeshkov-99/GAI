@@ -1,32 +1,39 @@
+// file: /prompts/promptUtils.js
+
 export function getSystemPrompt() {
-  return {
+    return {
       role: "system",
-      content: "You are an expert SQL assistant. You generate optimized SQL queries based on user input. The output should be in JSON format.",
-  };
-}
-
-export function getUserPrompt(input) {
-  return {
+      content: "You are a creative assistant specializing in generating unique and appetizing dish names for cooking recipes.",
+    };
+  }
+  
+  export function getUserPrompt(input) {
+    return {
       role: "user",
-      content: `Generate an optimized SQL query for the following request: "${input}". The query should handle filtering, joins, aggregations, and ordering if required.`,
-  };
-}
-
-export function getFunctions() {
-  return [
+      content: `Generate a creative dish name and a short description for a dish based on the following style or key ingredients: ${input}.`,
+    };
+  }
+  
+  export function getFunctions() {
+    return [
       {
-          name: "generate_sql_query",
-          description: "Generate an SQL query based on user input.",
-          parameters: {
-              type: "object",
-              properties: {
-                  sqlQuery: {
-                      type: "string",
-                      description: "The generated SQL query.",
-                  },
-              },
-              required: ["sqlQuery"],
+        name: "generate_dish_name",
+        description: "Generate a creative dish name and a short, appetizing description.",
+        parameters: {
+          type: "object",
+          properties: {
+            dishName: {
+              type: "string",
+              description: "The generated name of the dish.",
+            },
+            description: {
+              type: "string",
+              description: "A short appetizing description of the dish.",
+            },
           },
+          required: ["dishName", "description"],
+        },
       },
-  ];
-}
+    ];
+  }
+  
