@@ -1,0 +1,7 @@
+.sql-query {
+  background-color: #f4f4f4;
+  padding: 1rem;
+  border-radius: 5px;
+  font-family: monospace;
+  white-space: pre-wrap;
+}
